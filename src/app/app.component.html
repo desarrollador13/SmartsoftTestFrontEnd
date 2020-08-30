@@ -1,0 +1,152 @@
+<style>
+  .custom-logo{
+    margin-left: 40% !important;
+  }
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+  @media screen and (max-width: 575px) {
+    div .custom-form {
+      margin-left: 10% !important;
+    }
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  @media screen and (max-width: 998px) {
+    .custom-logo{
+      margin-left: 38% !important;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .custom-logo{
+      margin-left: 30% !important;
+    }
+  }
+  @media screen and (max-width: 508px) {
+    .custom-logo{
+      margin-left: 27% !important;
+    }
+  }
+</style>
+
+<div class="content" style="margin-bottom: 50px" role="main">
+  <div class="" style="height:55px;background: #003a64;"></div>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="mx-auto mt-3">
+        <div class="row">
+        <!--style="margin-left:402px;" -->
+        <img 
+        class="img-logo custom-logo" 
+        src='/assets/logo-prueba.png' 
+        width="200"
+        height="60" 
+        alt='image'>
+        </div>
+      </div>
+      <!-- <h3 class="text-center mt-1">Prueba de desarrollo SmartSoft</h3> -->
+      <p class="text-center mt-3"
+       style="box-shadow: 2px 26px 56px 0 rgba(0,0,0,.3); padding: 2px">
+       SmartSoft nace en el año 2002 y sus fundadores tienen la consigna de desarrollar la mejor solución enfocada en
+       <br>la prevención de fraude y el lavado de dinero para el sector financiero.
+      </p>
+     </div>
+
+     <div class="container-fluid mt-2">
+      <div class="row mt-2">
+          <div class="col-lg-4 col-sm-12 col-md-4 mt-2">
+            <div class="row">
+
+              <!--  style="width:370px; height:358px;" -->
+              <div class="col-xs-12 col-sm-9 example-col card" 
+                style="height: 350px !important;
+                border: 2px solid rgba(0,0,0,.125);" >
+                <h4 class="mt-3">Configuración</h4>
+                <kendo-dropdownlist 
+                  [data]="listTable" 
+                  [value]="valueTable"
+                  (selectionChange)="selectionChange($event)"
+                >
+                </kendo-dropdownlist>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8 mt-2 col-sm-12 col-md-8 col-offset-1 custom-form">
+            <div class="row">
+              <!-- style="height: auto" -->
+              <div class="col-12 card" 
+                style="height: 350px !important;
+                border: 2px solid rgba(0,0,0,.125);"> 
+                <h6 class="mt-3">Datos</h6>
+                <kendo-grid 
+                  ng-reflect-height="300"
+                  [data]="listDataTable"
+                  [height]="300"
+                  [pageable]="true" [sortable]="true"
+                  [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
+                  [navigable]="true"
+                  (dataStateChange)="onStateChange($event)"
+                  (add)="addHandler($event)"
+                  (edit)="editHandler($event)" 
+                  (cancel)="cancelHandler($event)"
+                  (save)="saveHandler($event)" 
+                  (remove)="removeHandler($event)"
+                >  
+                  <ng-template kendoGridToolbarTemplate>
+                    <button kendoGridAddCommand>Agregar</button>
+                    {{listData.columns}}
+                  </ng-template>
+
+                  <kendo-grid-column *ngFor="let column of listData" 
+                    field="{{column.header}}"
+                    title="{{column.header}}"
+                    filter="{{column.dataType}}">
+                  </kendo-grid-column>
+                  <!-- <kendo-grid-column field="dataType"  title="dataType"></kendo-grid-column>
+                  <kendo-grid-column field="format" title="format"></kendo-grid-column>
+                  <kendo-grid-column field="required"  title="required"></kendo-grid-column> -->
+                  <kendo-grid-command-column title="Acciones" width="200">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew">
+                      <button class="btn btn-primary" kendoGridEditCommand>Editar</button>
+                      <button kendoGridRemoveCommand>Eliminar</button>
+                      <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Guardar' : 'Actualizar' }}</button>
+                      <button kendoGridCancelCommand>{{ isNew ? 'Cancelar' : 'Cancelar' }}</button>
+                    </ng-template>
+                  </kendo-grid-command-column>
+                </kendo-grid>
+              </div>
+            </div> 
+          </div>
+
+      </div>
+     </div>
+  </div>
+
+</div>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
